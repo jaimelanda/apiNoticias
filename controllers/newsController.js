@@ -9,6 +9,7 @@ const getNoticias = async(req, res = response) => {
     news = await News.find().
     populate('persona', 'nombre apellido').
     populate('tipo', "descripcion")
+    
     res.json({
         ok: true,
         news
@@ -19,6 +20,7 @@ const crearNoticia = async(req, res = response) => {
     const uid = req.uid;
 
     const news = new News(req.body);
+    
     try {
         const NoticiaDB = await news.save();
 

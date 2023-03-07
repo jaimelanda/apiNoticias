@@ -6,12 +6,9 @@ const validarCampos = require('../midlewares/validarCampos');
 const { generateJWT } = require('../helpers/jwt');
 
 const login = async(req, res = response) => {
-
     const { email, password } = req.body;
 
-
     try {
-
         //verificar que el email exista en la bd
         const usuarioDB = await Usuario.findOne({ email });
         if (!usuarioDB) {
@@ -28,7 +25,6 @@ const login = async(req, res = response) => {
                 msg: 'password no valido'
             });
         }
-
         //Generacion de token utilizando jwt
         const token = await generateJWT(usuarioDB.id);
         res.json({
@@ -43,13 +39,9 @@ const login = async(req, res = response) => {
             msg: 'Error, comunicarse con el administrador'
         });
     }
-
-
 }
 
-
 const renewToken = async(req, res = response) => {
-
     const uid = req.uid;
     const token = await generateJWT(uid);
 
@@ -58,7 +50,6 @@ const renewToken = async(req, res = response) => {
         token
     });
 }
-
 
 module.exports = {
     login,

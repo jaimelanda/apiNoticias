@@ -24,5 +24,5 @@ app.use("/api/login", require("./routes/authRoute"));
 app.use("/api/news", require("./routes/newsRoute"));
 
 app.listen(process.env.PORT, () => {
-    console.log("Servidor corriendo en el puerto " + process.env.PORT);
+  console.log("Servidor corriendo en el puerto " + process.env.PORT);
 });
